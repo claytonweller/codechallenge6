@@ -39,8 +39,6 @@ const areSumsIdenticle = (arr1, arr2)=>{
     }
 }
 
-
-
 const removeDuplicateSums = (arr) =>{
     let i = 0
     let modifiedArr = arr.map(n=>n)
@@ -59,8 +57,6 @@ const removeDuplicateSums = (arr) =>{
     }
     return modifiedArr
 }
-
-
 
 const findUniqueSummingPairs = (arr, val)=>{
     let checkedSums = filterAllGoodSums(arr, val)
