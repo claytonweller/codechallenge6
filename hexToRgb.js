@@ -1,6 +1,6 @@
 /* 
-    This converts a hexidecimal string (with or without the '#') into RGB.
-    It exports hexToRgb, which has two methods:
+    hexToRgb.js converts a hexidecimal string (with or without the '#') into RGB.
+    This module exports hexToRgb, which has two methods:
         '.array' creates an array with the RGB values
         '.string' creates a string in the correct format for CSS
 */
@@ -45,7 +45,6 @@ const splitHexIntoPairArray = (hexidecimal)=>{
     if (hex[0]==='#'){
         hex.splice(0,1)
     }
-
     if ( hex.length === 6){
         r = hex[0].concat(hex[1])
         g = hex[2].concat(hex[3])
@@ -73,7 +72,5 @@ const hexToRgb = {
     array: hexToRgbArray,
     string: hexToRgbString
 }
-
-console.log(hexToRgb.string('#1234cd'))
 
 module.exports = hexToRgb
