@@ -72,7 +72,6 @@ const groupMatches = (val, arr, index)=>{
 
 const groupAllMatches = (arr)=>{
     let i = 0 
-    let matchesFound = false
     let modifiedArr = arr.map(n=>n)
     while(i<modifiedArr.length){
         let obj = groupMatches(modifiedArr[i],modifiedArr, i)
