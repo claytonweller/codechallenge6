@@ -87,6 +87,4 @@ const hexToRgb = {
     obj: hexToRgbObj
 }
 
-console.log(hexToRgb.obj)
-
 module.exports = hexToRgb

@@ -1,6 +1,6 @@
 /* 
     rgbToHex.js converts a rgb string (formtatted 'rgb(#, #, #)') or array (formatted [#, #, #]) into Hexidecimal.
-    This module exports hexToRgb, which has 3 methods:
+    This module exports rgbToHex, which has 3 methods:
         '.array' creates an array with hex values
         '.string' creates a string in the correct format for CSS
         '.obj' creates object with properites 'r', 'g', 'b'
@@ -71,9 +71,5 @@ const rgbToHex = {
     string: rgbToHexString,
     obj: rgbToHexObj
 }
-
-console.log(rgbToHex.array('rgb(17, 99, 231)'))
-console.log(rgbToHex.string('rgb(17, 99, 231)'))
-console.log(rgbToHex.obj('rgb(17, 99, 231)'))
 
 module.exports = rgbToHex
