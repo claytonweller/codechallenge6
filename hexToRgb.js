@@ -1,8 +1,9 @@
 /* 
-    hexToRgb.js converts a hexidecimal string (with or without the '#') into RGB.
-    This module exports hexToRgb, which has two methods:
+    hexToRgb.js converts a hexidecimal string (with or without the '#') or array (foramtted [#, #, #]) into RGB.
+    This module exports hexToRgb, which has 3 methods:
         '.array' creates an array with the RGB values
         '.string' creates a string in the correct format for CSS
+        '.obj' creates object with properites 'r', 'g', 'b'
 */
 
 const hexDigitToBaseTen = (dig)=>{
@@ -58,7 +59,10 @@ const splitHexIntoPairArray = (hexidecimal)=>{
 }
 
 const hexToRgbArray = (hex)=>{
-    let hexPairs = splitHexIntoPairArray(hex)
+    let hexPairs = hex
+    if(Array.isArray(hex) === false){
+        hexPairs = splitHexIntoPairArray(hex)
+    }
     let rgb = hexPairs.map(pair => hexPairToBaseTen(pair))
     return rgb
 } 
@@ -68,9 +72,21 @@ const hexToRgbString = (hex) =>{
     return 'rgb('+rbgArray[0]+', '+rbgArray[1]+', '+rbgArray[2]+')'
 }
 
+const hexToRgbObj = (hex) =>{
+    let rbgArray = hexToRgbArray(hex)
+    return {
+        r: rbgArray[0],
+        g: rbgArray[1],
+        b: rbgArray[2]
+    }
+}
+
 const hexToRgb = {
     array: hexToRgbArray,
-    string: hexToRgbString
+    string: hexToRgbString,
+    obj: hexToRgbObj
 }
+
+console.log(hexToRgb.obj)
 
 module.exports = hexToRgb
