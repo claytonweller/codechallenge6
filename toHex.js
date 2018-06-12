@@ -1,15 +1,45 @@
-const hexToHex = require('./hexToHex.js')
-const rgbToHex = require('./rgbToHex.js')
-const itIsHex = require('./itIsHex.js')
-const itIsRgb = require('./itIsRgb.js')
+const whatFormat = require('./whatFormat.js')
+const rgbStringToArray = require('./rgbStringToArray.js')
+const hexToPairArray = require('./hexToPairArray.js')
+const baseTenToHexPair = require('./baseTenToHexPair.js')
 
-
-const toHex = (input) =>{
-    if (itIsHex(input)){
-        return hexToHex(input)
-    } else if (itIsRgb(input)){
-        return rgbToHex(input)
+const hexToHexArray = (hex)=>{
+    let hexPairs = hex
+    if(Array.isArray(hex) === false){
+        hexPairs = hexToPairArray(hex)
     }
+    return hexPairs
+} 
+
+const toHexArray = (input)=>{
+    let hexArray = []
+    if (whatFormat(input) === 'rgb'){
+        rgbArray = rgbStringToArray(input)
+        hexArray = rgbArray.map(val => baseTenToHexPair(val))
+    } else if ( whatFormat(input) === 'hex'){
+        hexArray = hexToPairArray(input)
+    }
+    return hexArray
+} 
+
+const toHexString = (input) =>{
+    let hexArray = toHexArray(input)
+    return '#'+hexArray[0]+hexArray[1]+hexArray[2]
+}
+
+const toHexObj = (input) =>{
+    let hexArray = toHexArray(input)
+    return {
+        r: hexArray[0],
+        g: hexArray[1],
+        b: hexArray[2]
+    }
+}
+
+const toHex = {
+    array: toHexArray,
+    string: toHexString,
+    obj: toHexObj
 }
 
 module.exports = toHex

@@ -1,5 +1,5 @@
 const toHex = require('./toHex.js')
-const hexToRgb = require('./toRgb.js')
+const toRgb = require('./toRgb.js')
 
 const convertColor = {
     toRgb : toRgb,
@@ -8,4 +8,4 @@ const convertColor = {
 
 module.exports = convertColor
 
-console.log(convertColor.toHex.obj('#fdca18'))
+console.log(convertColor.toHex.string('rGb(123,12,222)'))

@@ -34,6 +34,4 @@ const toRgb = {
     obj: toRgbObj
 }
 
-console.log(toRgb.obj('rgb(123,19,44'))
-
 module.exports = toRgb
