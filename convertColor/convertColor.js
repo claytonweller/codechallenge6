@@ -13,7 +13,7 @@ const toRgb = require('./toRgb.js')
         convertColor.toRgb.obj('#ff89d3') ... would return => { r: 255, g: 137, b: 211, type: 'rgb'}
     
     It will also automatically detect if the input is hex or rgb, and can also be used to convert a string into an array or object of the same base:
-        convertColor.toHex.Array('1fd') ... would return => [11, ff, dd]
+        convertColor.toHex.array('1fd') ... would return => [11, ff, dd]
 
 */
 
