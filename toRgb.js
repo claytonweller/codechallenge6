@@ -1,24 +1,39 @@
-const hexToRgb = require('./hexToRgb.js')
-const rgbToRgb = require('./rgbToRgb.js')
-const itIsHex = require('./itIsHex.js')
-const itIsRgb = require('./itIsRgb.js')
+const whatFormat = require('./whatFormat.js')
+const rgbStringToArray = require('./rgbStringToArray.js')
+const hexToPairArray = require('./hexToPairArray.js')
+const hexPairToBaseTen = require('./hexPairToBaseTen.js')
 
-/*
-    This function tests to see if a function
+const toRgbArray = (input)=>{
+    let rgbArray = []
+    if(whatFormat(input) === 'hex'){
+        let hexPairs = hexToPairArray(input)
+        rgbArray = hexPairs.map(pair => hexPairToBaseTen(pair))
+    } else if (whatFormat(input) === 'rgb'){
+        rgbArray = rgbStringToArray(input)
+    }
+    return rgbArray
+} 
 
-*/
+const toRgbString = (input) =>{
+    let rgbArray = toRgbArray(input)
+    return 'rgb('+rbgArray[0]+', '+rbgArray[1]+', '+rbgArray[2]+')'
+}
 
-let toRgb = {}
-
-const whatIsTheFormat = (input) =>{
-    if (itIsHex(input) && typeof input === 'string'){
-        toRgb = hexToRgb
-    } else if (itIsRgb(input) && typeof input === 'string'){
-        toRgb = rgbToRgb
-    } else {
-        console.log( 'The given input is not a string. If you would like to convert array inputs into particular formats use "hexToRgb.js" or "rgbToRgb.js"')
+const toRgbObj = (input) =>{
+    let rbgArray = toRgbArray(input)
+    return {
+        r: rbgArray[0],
+        g: rbgArray[1],
+        b: rbgArray[2]
     }
 }
 
+const toRgb = {
+    array: toRgbArray,
+    string: toRgbString,
+    obj: toRgbObj
+}
+
+console.log(toRgb.obj('rgb(123,19,44'))
 
 module.exports = toRgb
