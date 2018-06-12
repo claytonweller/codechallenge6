@@ -32,7 +32,8 @@ const toHexObj = (input) =>{
     return {
         r: hexArray[0],
         g: hexArray[1],
-        b: hexArray[2]
+        b: hexArray[2],
+        type: 'hex'
     }
 }
 

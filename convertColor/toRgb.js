@@ -24,7 +24,8 @@ const toRgbObj = (input) =>{
     return {
         r: rbgArray[0],
         g: rbgArray[1],
-        b: rbgArray[2]
+        b: rbgArray[2],
+        type: 'rgb'
     }
 }
 
