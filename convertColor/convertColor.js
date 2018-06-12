@@ -23,5 +23,3 @@ const convertColor = {
 }
 
 module.exports = convertColor
-
-console.log(convertColor.toHex.array('1fd'))
